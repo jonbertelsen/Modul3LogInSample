@@ -42,21 +42,55 @@ public class ItemList {
         int numberOfTwos;
         int numberOfOnes;
 
-            // Calc front wall
-            for (int height = 0; height < order.getHeight(); height++) {
-                numberOfFours = order.getLength() / 4;
-                remainingBricks = order.getLength() % 4;       
-                this.brickArray[FRONTWALL][FOUR] += numberOfFours;
-                numberOfTwos = remainingBricks / 2;
-                remainingBricks = remainingBricks % 2;       
-                this.brickArray[FRONTWALL][TWO] += numberOfTwos;
-                numberOfOnes = remainingBricks / 1;
-                this.brickArray[FRONTWALL][ONE] += numberOfOnes;
-           }
+        // Calc front wall
+        for (int height = 0; height < order.getHeight(); height++) {
+            numberOfFours = order.getLength() / 4;
+            remainingBricks = order.getLength() % 4;
+            this.brickArray[FRONTWALL][FOUR] += numberOfFours;
+            numberOfTwos = remainingBricks / 2;
+            remainingBricks = remainingBricks % 2;
+            this.brickArray[FRONTWALL][TWO] += numberOfTwos;
+            numberOfOnes = remainingBricks / 1;
+            this.brickArray[FRONTWALL][ONE] += numberOfOnes;
         }
-     
+
         // Calc back wall
-                
-        
-        // Calc side wall x 2
+        for (int height = 0; height < order.getHeight(); height++) {
+            numberOfFours = order.getLength() / 4;
+            remainingBricks = order.getLength() % 4;
+            this.brickArray[BACKWALL][FOUR] += numberOfFours;
+            numberOfTwos = remainingBricks / 2;
+            remainingBricks = remainingBricks % 2;
+            this.brickArray[BACKWALL][TWO] += numberOfTwos;
+            numberOfOnes = remainingBricks / 1;
+            this.brickArray[BACKWALL][ONE] += numberOfOnes;
+        }
+
+        // Calc side walls
+        for (int height = 0; height < order.getHeight(); height++) {
+            numberOfFours = (order.getWidth() - 4) / 4;
+            remainingBricks = (order.getWidth() - 4) % 4;
+            this.brickArray[SIDEWALL][FOUR] += 2 * numberOfFours;
+            numberOfTwos = remainingBricks / 2;
+            remainingBricks = remainingBricks % 2;
+            this.brickArray[SIDEWALL][TWO] += 2 * numberOfTwos;
+            numberOfOnes = remainingBricks / 1;
+            this.brickArray[SIDEWALL][ONE] += 2 * numberOfOnes;
+        }
+
+    }
+    
+    public int sumColumn(int brickColumn) {
+
+        int sum = 0;
+
+        for (int row = 0; row < 3; row++) {
+            sum += brickArray[row][brickColumn];
+        }
+        return sum;
+    }
+     
+    
+    
+    
     }
