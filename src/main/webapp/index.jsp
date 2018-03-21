@@ -46,6 +46,12 @@
                 </td>
             </tr>
         </table>
+        
+        <a href="FrontController?command=help">Få hjælp til din bestilling</a>
+        
+        
+        
+        
         <% String error = (String) request.getAttribute( "error");
            if ( error != null) { %>
            <H2>Error!!</h2>

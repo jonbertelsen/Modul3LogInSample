@@ -18,4 +18,14 @@ public class LogicFacade {
         return user;
     }
 
+    public static Order createOrder( int length, int width, int height) {
+        Order order = new Order(length, width, height);
+        // OrderMapper.createOrder(order);
+        return order;
+    }
+    
+    public static ItemList createItemList(Order order){
+        ItemList itemList = new ItemList(order);
+        return itemList;
+    }
 }

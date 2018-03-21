@@ -13,6 +13,12 @@
     </head>
     <body>
         <h1>Hello <%=request.getParameter( "email" )%> </h1>
-        You are now logged in as a customer of our wonderful site.
+        <p>You are now logged in as a customer of our wonderful site.</p>
+        <p>Please choose between:</p>
+        <ul>
+            <li><a href="FrontController?command=enterorder">Order a Lego house</a></li>
+            <li><a href="FrontController?command=viewmyorderlist">View my order list</li>
+        </ul>
+        
     </body>
 </html>
