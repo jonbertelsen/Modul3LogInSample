@@ -5,23 +5,29 @@
  */
 package PresentationLayer;
 
+import FunctionLayer.ItemList;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
+import FunctionLayer.Order;
 import FunctionLayer.User;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author jobe
  */
-public class Help extends Command {
+public class ViewOrder extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-
-        return "help";
+        int orderId = Integer.parseInt(request.getParameter("orderid"));
+        Order order = LogicFacade.getOrder(orderId);
+        request.setAttribute("order", order);
+        User user = LogicFacade.getUser(order.getUserId());
+        request.setAttribute("user", user);
+        ItemList itemList = LogicFacade.createItemList(order);
+        request.setAttribute("itemList", itemList);
+        return "vieworder";
     }
-
 }

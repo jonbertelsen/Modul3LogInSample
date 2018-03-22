@@ -5,7 +5,10 @@
  */
 package PresentationLayer;
 
+import FunctionLayer.ItemList;
+import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
+import FunctionLayer.Order;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,12 +16,15 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jobe
  */
-public class EnterOrder extends Command {
+public class ViewMyOrder extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-
-        return "enterorder";
+        int orderId = Integer.parseInt(request.getParameter("orderid"));
+        Order order = LogicFacade.getOrder(orderId);
+        request.setAttribute("order", order);
+        ItemList itemList = LogicFacade.createItemList(order);
+        request.setAttribute("itemList", itemList);
+        return "viewmyorder";
     }
-
 }

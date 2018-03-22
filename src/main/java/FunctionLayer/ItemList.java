@@ -67,7 +67,7 @@ public class ItemList {
 
         int sum = 0;
 
-        for (int row = FRONTWALL; row < LEFTWALL; row++) {
+        for (int row = FRONTWALL; row <= LEFTWALL; row++) {
             sum += brickArray[row][brickColumn];
         }
         return sum;

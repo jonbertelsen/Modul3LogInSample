@@ -13,12 +13,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jobe
  */
-public class EnterOrder extends Command {
+public class EmployeePage extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-
-        return "enterorder";
+        return "employeepage";
     }
-
 }
