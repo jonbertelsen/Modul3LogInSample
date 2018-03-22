@@ -52,8 +52,15 @@ public class ItemList {
         int numberOfOnes;
 
         for (int row = 0; row < height; row++) {
-            numberOfFours = length / 4;
-            remainingBricks = length % 4;
+            remainingBricks = length;
+            
+            // forbandt: hver anden række startes med en 1-klods
+            if (row % 2 == 1) {
+                this.brickArray[wall][ONE]++;
+                remainingBricks--;
+            }
+            numberOfFours = remainingBricks / 4;
+            remainingBricks = remainingBricks % 4;
             this.brickArray[wall][FOUR] += numberOfFours;
             numberOfTwos = remainingBricks / 2;
             remainingBricks = remainingBricks % 2;
